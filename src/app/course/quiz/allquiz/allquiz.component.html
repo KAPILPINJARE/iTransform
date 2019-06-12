@@ -1,0 +1,5 @@
+<h2>AllQuiz</h2>
+<div *ngFor="let quiz of quiz; let i=index">
+    
+    <a [routerLink]="['/quiz',i]" >{{quiz.quizId}}</a>
+</div>

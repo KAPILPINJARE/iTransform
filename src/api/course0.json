@@ -1,0 +1,82 @@
+[
+    {
+        "courseName": "Core Java",
+        "courseChapter" : [
+            {
+                "chapterName" : "Declarations and Access Control",
+                "chapterModule" : [
+                    {
+                        "moduleName": "Declare Classes",
+                        "moduleDetails" : [
+                            {
+                                "title": "Declare Classes",
+                                "description" : "When you write code in Java, you're writing classes or interfaces Within those classes as you know  are variables and methods (plus a few other things) How you declare your classes , methods, and variables dramatically affects your code's behavior. For example a public method can be accessed from code running anywhere in your application. Mark that method private though and it vanishes from everyone's radar (except the class in which it was declared). For this objective we'll study the ways in which you can declare and modify (or not) a class. You'll find that we cover modifiers in an extreme level of detail and though we know you're already familiar with them we're starting from the very beginning. Most Java programmers think they know how all the modifiers work but on closer study often find out that they don't (at least not to the degree needed for the exam). Subtle distinctions are everywhere so you need to be absolutely certain you're completely solid on everything in this section's objectives before taking the exam.",
+                                "subtitle" : "Class Declarations and Modifiers",
+                                "subdescription" : "Although nested (often called inner) classes are on the exam we'll save nested class declarations for Chapter 8. You're going to love that chapter. No really. Seriously. The following code is a bare-bones class declaration: class MyClass { }  This code compiles just fine, but you can also add modifiers before the class declaration. Modifiers fall into two categories: 1)Access modifiers: public, protected, private 2)Non-access modifiers (including strictfp, final, and abstract).",
+                                "subtitle1": "Class Access",
+                                "subdescription1" : "What does it mean to access a class? When we say code from one class (class A) has access to another class (class B) it means class A can do one of three things: 1)Create an instance of class B. 2)Extend class B (in other words, become a subclass of class B). 3)Access certain methods and variables within class B, depending on the access control of those methods and variables. In effect, access means visibility. If class A can't see class B, the access level of the  methods and variables within class B won't matter; class A won't have any way to access those methods and variables.",
+                                "subtitle2" : "Default Access",
+                                "subdescription2": "A class with default access has no modifier preceding it in the declaration! It's the access control you get when you don't type a modifier in the class declaration. Think of default access as package-level access because a class with default access can be seen only by classes within the same package. For example if class A and class B are in different packages and class A has default access class B won't be able to create an instance of class A or even declare a variable or return type of class A. In fact class B has to pretend that class A doesn't even exist or the compiler will complain. Look at the following source file:",
+                                "subdescription21": "As you can see, the superclass (Beverage) is in a different package from the subclass (Tea). The import statement at the top of the Tea file is trying (fingers crossed) to import the Beverage class. The Beverage file compiles fine but when we try to compile the Tea file we get something like:",
+                                "warn1": "Can't access class cert.Beverage. Class or interface must be public, in same package, or an accessible member class.import cert.Beverage;",
+                                "subdescription22" : "Tea won't compile because its superclass, Beverage, has default access and is in a different package. You can do one of two things to make this work. You could put both classes in the same package, or you could declare Beverage as public, as the next section describes.",
+                                "subtitle3" : "Public Access",
+                                "subdescription3": "A class declaration with the public keyword gives all classes from all packages access to the public class. In other words, all classes in the Java Universe (JU) have access to a public class. Don't forget, though, that if a public class you're trying to use is in a different package from the class you're writing, you'll still need to import the public class. In the example from the preceding section, we may not want to place the subclass in the same package as the superclass. To make the code work, we need to add the keyword public in front of the superclass (Beverage) declaration, as follows:",
+                                "subdescription31": "This changes the Beverage class so it will be visible to all classes in all packages.The class can now be instantiated from all other classes, and any class is now free to subclass (extend from) it—unless, that is, the class is also marked with the nonaccess modifier final. Read on.",
+                                "subtitle4": "Other (Nonaccess) Class Modifiers",
+                                "subdescription4": "You can modify a class declaration using the keyword final, abstract, or strictfp. These modifiers are in addition to whatever access control is on the class,so you could, for example, declare a class as both public and final. But you can't always mix nonaccess modifiers. You're free to use strictfp in combination with final, for example, but you must never, ever, ever mark a class as both final and abstract. You'll see why in the next two sections. You won't need to know how strictfp works, so we're focusing only on modifying a class as final or abstract. For the exam, you need to know only that strictfp is a keyword and can be used to modify a class or a method, but never a variable. Marking a class as strictfp means that any method code in the class will conform to the IEEE 754 standard rules for floating points. Without that modifier,floating points used in the methods might behave in a platform-dependent way. If you don't declare a class as strictfp, you can still get strictfp behavior on a method-by-method basis, by declaring a method as strictfp. If you don't know the IEEE 754 standard, now's not the time to learn it. You have, as we say, bigger fish to fry.",
+                                "subtitle5": "Final Classes",
+                                "subdescription5" : "When used in a class declaration, the final keyword means the class can't be subclassed. In other words, no other class can ever extend (inherit from) a final class, and any attempts to do so will give you a compiler error.So why would you ever mark a class final? After all, doesn't that violate the whole object-oriented (OO) notion of inheritance? You should make a final class only if you need an absolute guarantee that none of the methods in that class will ever be overridden. If you're deeply dependent on the implementations of certain methods, then using final gives you the security that nobody can change the implementation out from under you.You'll notice many classes in the Java core libraries are final. For example, the String class cannot be subclassed. Imagine the havoc if you couldn't guarantee how a String object would work on any given system your application is running on! If programmers were free to extend the String class (and thus substitute their new String subclass instances where java.lang.String instances are expected),civilization—as we know it—could collapse. So use final for safety, but only when you're certain that your final class has indeed said all that ever needs to be said in its methods. Marking a class final means, in essence, your class can't ever be improved upon, or even specialized, by another programmer.A benefit of having nonfinal classes is this scenario: Imagine you find a problem with a method in a class you're using, but you don't have the source code. So you can't modify the source to improve the method, but you can extend the class and override the method in your new subclass, and substitute the subclass everywhere the original superclass is expected. If the class is final, though, then you're stuck.Let's modify our Beverage example by placing the keyword final in the declaration:"
+                                       
+                            }
+                        ]
+                    },
+                    {
+                        "moduleName" : "Declare Interfaces",
+                        "moduleDetails": [
+                            {
+                                "title1": "Declare Interfaces",
+                                "description1": "When you create an interface, you're defining a contract for what a class can do,without saying anything about how the class will do it. An interface is a contract.You could write an interface Bounceable, for example, that says in effect,This is the Bounceable interface. Any class type that implements this interface must agree to write the code for the bounce() and setBounceFactor() methods.By defining an interface for Bounceable, any class that wants to be treated as a Bounceable thing can simply implement the Bounceable interface and provide code for the interface's two methods.",
+                                "subdescription": "Interfaces can be implemented by any class, from any inheritance tree. This lets you take radically different classes and give them a common characteristic.For example, you might want both a Ball and a Tire to have bounce behavior, but Ball and Tire don't share any inheritance relationship; Ball extends Toy while Tire extends only java.lang.Object.",
+                                "subdescription1": "All interface methods are implicitly public and abstract. In other words,you do not need to actually type the public or abstract modifiers in the method declaration, but the method is still always public and abstract.All variables defined in an interface must be public, static, and final in other words, interfaces can declare only constants, not instance variables.Interface methods must not be static.Because interface methods are abstract, they cannot be marked final,strictfp, or native.An interface can extend one or more other interfaces.An interface cannot extend anything but another interface.An interface cannot implement another interface or class.An interface must be declared with the keyword interface.Interface types can be used polymorphically (see Chapter 2 for more details)."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "chapterName" : "Object Orientation",
+                "chapterModule" : [
+                    {
+                        "moduleName": "Encapsulation",
+                        "moduleDetails": [
+                            {
+                                "title1" : "Encapsulation",
+                                "description1" : "The ability to make changes in your implementation code without breaking the code of others who use your code is a key benefit of encapsulation. You want to hide implementation details behind a public programming interface. By interface,we mean the set of accessible methods your code makes available for other code to call—in other words, your code's API. By hiding implementation details, you can rework your method code (perhaps also altering the way variables are used by your class) without forcing a change in the code that calls your changed method.",
+                                "subdescription": "If you want maintainability, flexibility, and extensibility (and of course, you do),your design must include encapsulation. How do you do that?■ Keep instance variables protected (with an access modifier, often private).■ Make public accessor methods, and force calling code to use those methods rather than directly accessing the instance variable.■ For the methods, use the JavaBeans naming convention of set<someProperty> and get<someProperty>"
+                            }
+                        ]
+                    },
+                    {
+                        "moduleName": "Inheritance",
+                        "moduleDetails" : [
+                            {
+                                "title1": "Inheritance",
+                                "description1": "Inheritance is everywhere in Java. It's safe to say that it's almost (almost?) impossible to write even the tiniest Java program without using inheritance.In OO, the concept of IS-A is based on class inheritance or interface implementation. IS-A is a way of saying, this thing is a type of that thing. For example, a Mustang is a type of horse, so in OO terms we can say, Mustang IS-A Horse. Subaru IS-A Car. Broccoli IS-A Vegetable (not a very fun one, but it still counts). You express the IS-A relationship in Java through the keywords extends (for class inheritance) and implements (for interface implementation)."
+                            }
+                        ]
+                    },
+                    {
+                        "moduleName" : "Polymorphism",
+                        "moduleDetails" : [
+                            {
+                                "title1" : "Polymorphism",
+                                "description1": "any Java object that can pass more than one IS-A test can be considered polymorphic. Other than objects of type Object, all Java objects are polymorphic in that they pass the IS-A test for their own type and for class Object.Remember that the only way to access an object is through a reference variable,and there are a few key things to remember about references:A reference variable can be of only one type, and once declared, that type can never be changed (although the object it references can change).■ A reference is a variable, so it can be reassigned to other objects, (unless the reference is declared final).■ A reference variable's type determines the methods that can be invoked on the object the variable is referencing.■ A reference variable can refer to any object of the same type as the declared reference, or—this is the big one—it can refer to any subtype of the declared type!■ A reference variable can be declared as a class type or an interface type. If the variable is declared as an interface type, it can reference any object of any class that implements the interface."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

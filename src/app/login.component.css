@@ -1,0 +1,79 @@
+.btn-social{
+	background: #df3826;
+}
+
+.btn-social {
+	border: #df3826;
+}
+
+#login-page {
+	width: 100%;
+	height: 100%;
+	/* background-image: url('../assets/images/urban.jpg');
+	background-size: cover;
+	background-position: center; */
+	padding: 60px 0 50px;
+}
+
+.btn-social { color: #ffffff;}
+
+.btn-social:hover, .btn-social:focus, .btn-social:active { 
+	color: #ffffff;
+	background: #e8a500;
+}
+
+.btn-social:active:focus { background: #d09400;}
+
+.form-box {
+	width: 380px;
+	height: 320px;
+	padding: 50px 15px 20px 15px;
+	color: #ffffff;
+	/* position: relative;
+	top: 50%; */
+	
+	margin: 86px auto;
+	/* margin-top: -185px; */
+	background: rgba(0, 0, 0, 0.75);
+}
+
+.form-box form {
+	margin-bottom: 20px;
+}
+
+.form-box input {
+	margin-top: 20px;
+}
+
+.form-box input[type="submit"] {
+	width: 100%;
+}
+
+.form-logo {
+	width: 26%;
+	padding: 0 10px;
+	margin: 0 auto;
+}
+
+.form-logo img { width:90%;
+	margin:25px 0 10px;
+	height: auto;}
+	
+	.login-action, .login-action:link, .login-action:focus, .login-action:visited {
+		color: #ffffff;
+		font-size: 12px;
+	}
+	
+	footer.login-footer {
+		position: fixed;
+		bottom: 0px;
+		background: #404040;
+		width: 100%;
+		padding: 15px;
+		color: #fff;
+	}
+	
+	.login-footer .col-xs-3{
+		justify-content: center;
+	}
+	

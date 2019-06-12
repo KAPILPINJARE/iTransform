@@ -1,0 +1,33 @@
+<h2>Quiz Time</h2>
+<div class="container">
+    <div>
+        {{quiz.question}}<br><br><br>
+        
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="option" 
+                        class="form-check-input"    [(ngModel)]="choose"/>{{quiz.option1}}<br>
+                </div>
+
+                <div class="form-check form-check-inline">
+                        <input type="radio" name="option" 
+                            class="form-check-input"   [(ngModel)]="choose"/>{{quiz.option2}}<br>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="option" 
+                            class="form-check-input"   [(ngModel)]="choose"/>{{quiz.option3}}<br>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="option" 
+                            class="form-check-input"   [(ngModel)]="choose"/>{{quiz.option4}}<br>
+                    </div>
+                 
+                    <button type="submit" class="btn btn-block btn-primary" >Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div *ngIf="course">
+    <div class="row sideb" >
+        <div class="col-sm-3 bg-dark left-sidebar">
+            <div class="sidebar">
+                <nav class="sidebar" >
+                    <div class="list-group" >    
+                        <div id="accordion">
+                            <div  *ngFor="let chapter of course.courseChapter; let i=index">
+                                <div  id="heading{{i}}">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link btn-chap" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="true" [attr.aria-controls]="'collapse'+i">
+                                            {{chapter.chapterName}}
+                                        </button>
+                                    </h5>
+                                </div>
+                                
+                                <div id="collapse{{i}}" class="collapse show" [attr.aria-labelledby]="'heading'+i" data-parent="#accordion">
+                                    <div >
+                                        <ul *ngFor="let module of course.courseChapter[i].chapterModule; let j=index">
+                                            <li>
+                                                <a routerLink="modules/{{i}}/{{j}}" class="btn-module" (click)="onClick()">
+                                                    {{module.moduleName}}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+        <div class="col-sm-9">
+                <h2 style="margin-left: 22%;">{{course.courseName}}</h2>
+               
+            <router-outlet></router-outlet>
+        </div>
+        
+        
+        
+        
+    </div>
+    
+</div>
